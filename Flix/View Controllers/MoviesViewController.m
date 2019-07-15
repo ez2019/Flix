@@ -12,8 +12,9 @@
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -25,8 +26,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
     [self fetchMovies];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)fetchMovies{
@@ -41,15 +44,13 @@
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"%@", dataDictionary);
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
             self.movies = dataDictionary[@"results"];
             for (NSDictionary *movie in self.movies){
                 NSLog(@"%@", movie[@"title"]);
             }
             [self.tableView reloadData]; // Call your data source methods again, because your underlying data may have changed
         }
+        [self.refreshControl endRefreshing];
     }];
     [task resume];
 }
