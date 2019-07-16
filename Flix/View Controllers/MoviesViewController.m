@@ -8,6 +8,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieCell.h"
+#import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -55,16 +56,6 @@
     [task resume];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     NSDictionary *movie = self.movies[indexPath.row];
@@ -83,5 +74,22 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.movies.count;
 }
+
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+     // sender is the object that fired the event (in this case, it is the table view cell that got tapped on)
+     UITableViewCell *tappedCell = sender;
+     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+     NSDictionary *movie = self.movies[indexPath.row];
+     DetailsViewController *detailsViewController = [segue destinationViewController];
+     detailsViewController.movie = movie;
+     NSLog(@"Tapping on a movie!");
+ }
+
 
 @end
