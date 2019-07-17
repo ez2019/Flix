@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="-97" y="-818"/>
         </scene>
-        <!--Item-->
+        <!--Grid View-->
         <scene sceneID="kNc-jR-Si1">
             <objects>
                 <navigationController id="My2-MU-wme" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="WfJ-co-4OY"/>
+                    <tabBarItem key="tabBarItem" title="Grid View" image="reel_tabbar_icon" id="WfJ-co-4OY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I4S-8i-KQR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -239,6 +239,7 @@
     </scenes>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="reel_tabbar_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7sf-F4-Skh"/>
