@@ -8,6 +8,8 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "MoviesViewController.h"
+#import "MoviesGridViewController.h"
 
 @interface DetailsViewController ()
 

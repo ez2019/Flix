@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190" y="745"/>
+            <point key="canvasLocation" x="157" y="864"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="04e-5v-14A">
@@ -218,6 +218,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="Rsq-6C-bY5" id="ATZ-yI-etq"/>
+                                            <segue destination="Q9G-zf-kbU" kind="show" id="7sf-F4-Skh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -239,4 +240,7 @@
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7sf-F4-Skh"/>
+    </inferredMetricsTieBreakers>
 </document>
